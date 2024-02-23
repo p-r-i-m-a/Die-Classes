@@ -8,6 +8,7 @@ namespace Die_Classes
 {
     public class Die
     {
+        // Mr. Aldworth is skeptical
         private Random _generator;
         private int _roll;
 
