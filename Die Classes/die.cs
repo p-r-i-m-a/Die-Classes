@@ -9,32 +9,59 @@ namespace Die_Classes
     public class Die
     {
         // Mr. Aldworth is skeptical
-        private Random _generator;
+         
         private int _roll;
+        private Random _genorator;
 
-        public Die()
+        public Die() //this is your constructer, you can call this code from main
         {
-            _generator = new Random();
-            _roll = _generator.Next(1, 7);
+            _genorator = new Random();
+            _roll = _genorator.Next(1, 7);
         }
 
-        public Die(int roll)
+        public int Roll
         {
-            _generator = new Random(roll);
-            _generator.Next(1, 7);
+            get { return _roll; }
         }
 
-        public int Roll { get { return _roll; } }
+        public int RollDie()//get a new roll
+        {
+            _roll = _genorator.Next(1, 7);
+            return _roll;
+        }
 
-        public override string ToString()
+        public void DrawRoll()
+        {
+            if (_roll == 1)
+            {
+                Console.Write("_______\r\n|      |\r\n|  o   |\r\n|______|\r\n");
+            }
+            else if (_roll == 2)
+            {
+                Console.Write("_______\r\n|  o   |\r\n|      |\r\n|____o_|\r\n");
+            }
+            else if (_roll == 3)
+            {
+                Console.Write("_______\r\n| o    |\r\n|  o   |\r\n|____o_|\r\n");
+            }
+            else if (_roll == 4)
+            {
+                Console.Write("_______\r\n| o  o |\r\n|      |\r\n|_o__o_|\r\n");
+            }
+            else if (_roll == 5)
+            {
+                Console.Write("_______\r\n| o  o |\r\n|  o   |\r\n|_o__o_|\r\n");
+            }
+            else if (_roll == 6)
+            {
+                Console.Write("_______\r\n| o  o |\r\n| o  o |\r\n|_o__o_|\r\n");
+            }
+        }
+        public override string ToString()//not needed
         {
             return _roll.ToString();
         }
 
-        public void RollDie()
-        {
-            
-        }
     }
 
 
