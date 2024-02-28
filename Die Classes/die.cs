@@ -9,7 +9,7 @@ namespace Die_Classes
     public class Die
     {
         // Mr. Aldworth is skeptical
-         
+        public int roll;
         private int _roll;
         private Random _genorator;
 
@@ -17,6 +17,8 @@ namespace Die_Classes
         {
             _genorator = new Random();
             _roll = _genorator.Next(1, 7);
+
+            
         }
 
         public int Roll
@@ -28,7 +30,9 @@ namespace Die_Classes
         {
             _roll = _genorator.Next(1, 7);
             return _roll;
+            
         }
+        
 
         public void DrawRoll()
         {
