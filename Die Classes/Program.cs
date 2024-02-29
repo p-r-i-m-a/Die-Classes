@@ -10,7 +10,7 @@ namespace Die_Classes
             double betAmount, wallet = 100;
             bool playing = false, done = false, chosing = false;
             
-            string chose;
+            string? chose;
 
             do
             {
@@ -72,14 +72,13 @@ namespace Die_Classes
                 Console.WriteLine();
                 chose = Console.ReadLine();
 
-                while (chose != "Y" || chose != "N")
+                while (chose != "Y")
                 {
                     Console.WriteLine("Please enter eiter Y, or N.");
                     Console.WriteLine();
                     chose = Console.ReadLine();
+                    Console.WriteLine() ;
                 }
-
-                chose.ToLower();
 
                 if (chose == "n")
                 {
@@ -120,10 +119,25 @@ namespace Die_Classes
             if (totalRoll == bet)
             {
                 Console.WriteLine("You won!");
+                if (roll1 == roll2)
+                {
+                    Console.WriteLine("The rolls where doubles, you earn 2x the initial bet!");
+                    Console.WriteLine();
+                    wallet = wallet + (bet * 2);
+                    Console.WriteLine("Your wallet total is now: $" + wallet);
+                }
+                else
+                {
+                    Console.WriteLine("No doubles rolled, you earn 1x the bet.");
+                    Console.WriteLine();
+                    wallet = wallet + bet;
+                    Console.WriteLine("Your wallet total is now: $" + wallet);
+                }
             }
             else
             {
-                Console.WriteLine("You lost :(");
+                wallet = wallet - bet;
+                Console.WriteLine("You lost. your new wallet total is: $" + wallet);
             }
         }
     }
