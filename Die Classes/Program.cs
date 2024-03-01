@@ -1,16 +1,17 @@
 ﻿using System.Numerics;
+using System.Runtime.CompilerServices;
 
 namespace Die_Classes
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public static void gamee()
         {
             int roll1, roll2, totalRoll, bet;
             double betAmount, wallet = 100;
             bool playing = false, done = false, chosing = false;
-            
-            string? chose;
+
+            string chose;
 
             do
             {
@@ -70,21 +71,35 @@ namespace Die_Classes
                 Console.WriteLine();
                 Console.WriteLine("If you wish to proceed, enter Y, if you wish to make different bets, enter N.");
                 Console.WriteLine();
-                chose = Console.ReadLine();
-
-                while (chose != "Y")
+                chose = Console.ReadLine().ToUpper();
+                Console.WriteLine();
+                while (!playing)
                 {
-                    Console.WriteLine("Please enter eiter Y, or N.");
-                    Console.WriteLine();
-                    chose = Console.ReadLine();
-                    Console.WriteLine() ;
+                    if (chose == "Y")
+                    {
+                        playing = true;
+                    }
+                    else if (chose == "N")
+                    {
+                        playing = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter eiter Y, or N.");
+                        Console.WriteLine();
+                        chose = Console.ReadLine();
+                        Console.WriteLine();
+
+                    }
+                    
+                    
                 }
 
-                if (chose == "n")
+                if (chose == "N")
                 {
                     chosing = false;
                 }
-                else
+                else if (chose == "Y")
                 {
                     chosing = true;
                 }
@@ -94,10 +109,11 @@ namespace Die_Classes
             wallet = wallet - betAmount;
             Console.Clear();
             Console.WriteLine("You bet: " + betAmount);
-            Console.WriteLine() ;
+            Console.WriteLine();
             Console.WriteLine("You bet on: #" + bet);
             Console.WriteLine();
             Console.WriteLine("Press 'enter' to continue.");
+            Console.ReadLine();
             Console.WriteLine();
 
             Die die1 = new Die();
@@ -105,6 +121,7 @@ namespace Die_Classes
 
             die1.DrawRoll();
             die2.DrawRoll();
+            Console.WriteLine();
 
             Console.WriteLine(die1.Roll);
             Console.WriteLine();
@@ -139,6 +156,24 @@ namespace Die_Classes
                 wallet = wallet - bet;
                 Console.WriteLine("You lost. your new wallet total is: $" + wallet);
             }
+
+            Console.WriteLine();
+            Console.WriteLine("Please enter 'Y' if you want to play again.\r\nPlease enter 'N' if you want to end the program.");
+            chose = Console.ReadLine().ToUpper();
+
+            if (chose == "Y")
+            {
+                Console.Clear();
+                gamee();
+            }
+            else if (chose == "N")
+            {
+                Console.Clear();
+            }
+        }
+        static void Main(string[] args)
+        {
+            gamee();
         }
     }
 }
